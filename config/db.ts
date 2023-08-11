@@ -1,9 +1,9 @@
-import { Sequelize } from 'sequelize-typescript';
 import { config } from 'dotenv';
+import { Sequelize } from 'sequelize-typescript';
 
 config();
 
-const sequelize = new Sequelize({
+const sequelizeConnection = new Sequelize({
   database: process.env.DB_NAME,
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
@@ -11,4 +11,4 @@ const sequelize = new Sequelize({
   dialect: 'mysql'
 });
 
-export default sequelize;
+export default sequelizeConnection;
