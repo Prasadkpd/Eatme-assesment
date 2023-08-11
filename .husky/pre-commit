@@ -3,4 +3,4 @@
 
 yarn lint:fix
 yarn lint
-yarn prettier:fix
+# yarn prettier:fix

@@ -1,5 +1,5 @@
 import configurations from 'config';
-import express from "express";
+import express from 'express';
 import routes from './routes';
 import { authenticateAndSyncDatabase, logger } from './utils';
 
