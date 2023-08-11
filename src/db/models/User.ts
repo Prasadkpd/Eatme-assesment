@@ -1,28 +1,29 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../../../config/db';
 
-interface IngredientAttributes {
-  id: number;
-  name: string;
-  slug: string;
-  description?: string;
-  foodGroup?: string;
+type UserType = 'Customer' | 'Admin';
+
+interface UserAttributes {
+  user_id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  is_active?: boolean;
+  user_type?: UserType;
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;
 }
-export type IngredientInput = Optional<IngredientAttributes, 'id' | 'slug'>;
-export type IngredientOuput = Required<IngredientAttributes>;
+export type UserInput = Optional<UserAttributes, 'user_id'>;
+export type UserOuput = Required<UserAttributes>;
 
-class Ingredient
-  extends Model<IngredientAttributes, IngredientInput>
-  implements IngredientAttributes
-{
-  public id!: number;
-  public name!: string;
-  public slug!: string;
-  public description!: string;
-  public foodGroup!: string;
+class User extends Model<UserAttributes, UserInput> implements UserAttributes {
+  public user_id!: number;
+  public first_name!: string;
+  public last_name!: string;
+  public email!: string;
+  public is_active!: boolean;
+  public user_type!: UserType;
 
   // timestamps!
   public readonly createdAt!: Date;
@@ -30,27 +31,34 @@ class Ingredient
   public readonly deletedAt!: Date;
 }
 
-Ingredient.init(
+User.init(
   {
-    id: {
+    user_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       autoIncrement: true,
       primaryKey: true
     },
-    name: {
+    first_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    slug: {
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
     },
-    description: {
-      type: DataTypes.TEXT
+    is_active: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     },
-    foodGroup: {
-      type: DataTypes.STRING
+    user_type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'Customer'
     }
   },
   {
@@ -60,4 +68,4 @@ Ingredient.init(
   }
 );
 
-export default Ingredient;
+export default User;

@@ -1,4 +1,4 @@
-export interface GetAllIngredientsFilters {
-  isDeleted?: boolean;
-  includeDeleted?: boolean;
+export interface GetAllUsersFilters {
+  isInActive?: boolean;
+  includeInActive?: boolean;
 }
