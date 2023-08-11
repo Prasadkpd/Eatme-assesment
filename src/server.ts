@@ -1,5 +1,5 @@
 import configurations from 'config';
-import express from 'express';
+import express from "express";
 import routes from './routes';
 import { authenticateAndSyncDatabase, logger } from './utils';
 
@@ -10,6 +10,6 @@ const app = express();
 authenticateAndSyncDatabase();
 
 app.listen(port, () => {
-  logger.info(`App is running at http://localhost:${port}`);
+  logger.info(`App Server is running at http://localhost:${port}`);
   routes(app);
 });

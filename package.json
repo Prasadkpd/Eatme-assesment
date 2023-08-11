@@ -10,8 +10,8 @@
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prettier": "prettier --check **/*.ts",
-    "prettier:fix": "prettier --write **/*.ts",
+    "prettier": "prettier --check 'src/**/*.ts'",
+    "prettier:fix": "prettier --write 'src/**/*.ts'",
     "prepare": "husky install",
     "build": "rimraf build && tsc -p tsconfig.json"
   },
