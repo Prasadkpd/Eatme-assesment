@@ -1,7 +1,4 @@
 import logger from './logger';
-import { authenticateAndSyncDatabase } from "./sequelizeUtils";
+import { authenticateAndSyncDatabase } from './sequelizeUtils';
 
-export {
-    logger,
-    authenticateAndSyncDatabase
-}
+export { authenticateAndSyncDatabase, logger };
