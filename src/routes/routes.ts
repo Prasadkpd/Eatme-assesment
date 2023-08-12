@@ -1,4 +1,5 @@
 import express from 'express';
+import sessionRouter from './session.routes';
 import userRouter from './user.routes';
 
 const apiRouter = express.Router();
@@ -8,5 +9,6 @@ apiRouter.get('/', (req, res) => {
 });
 
 apiRouter.use('/users', userRouter);
+apiRouter.use('/sessions', sessionRouter);
 
 export default apiRouter;

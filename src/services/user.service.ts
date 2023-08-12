@@ -1,6 +1,8 @@
 import { GetAllUsersFilters } from '../db/dal/types';
 import * as UserDal from '../db/dal/user.dal';
 import { UserInput, UserOutput } from '../db/models/User.model';
+import { verifyPassword } from '../utils/passwordUtils';
+import { omit } from 'lodash';
 
 export const create = async (payload: UserInput): Promise<UserOutput> => {
   const createdUser = UserDal.create(payload);
@@ -21,4 +23,23 @@ export const deleteById = (id: string): Promise<boolean> => {
 
 export const getAll = (filters: GetAllUsersFilters): Promise<UserOutput[]> => {
   return UserDal.getAll(filters);
+};
+
+export const validatePassword = async ({
+  email,
+  password
+}: {
+  email: string;
+  password: string;
+}): Promise<UserOutput | null> => {
+  const user = await UserDal.getByEmail(email);
+  if (!user) {
+    return null;
+  }
+
+  const isValid = await verifyPassword(password, user.password);
+
+  if (!isValid) return null;
+
+  return omit(user.toJSON(), 'password');
 };

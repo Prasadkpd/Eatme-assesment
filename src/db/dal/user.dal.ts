@@ -66,3 +66,15 @@ export const getAll = async (filters?: GetAllUsersFilters): Promise<UserOutput[]
     ...(filters?.isInActive || filters?.includeInActive ? { paranoid: true } : {})
   });
 };
+
+export const getByEmail = async (email: string): Promise<User | null> => {
+  const user = await User.findOne({
+    where: {
+      email: {
+        [Op.eq]: email
+      }
+    }
+  });
+
+  return user;
+};

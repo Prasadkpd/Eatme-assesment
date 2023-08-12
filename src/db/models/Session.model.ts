@@ -2,6 +2,7 @@ import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../../../config/db';
 
 interface SessionAttributes {
+  session_id: string;
   user_id: string;
   valid: boolean;
   user_agent: string;
@@ -10,10 +11,12 @@ interface SessionAttributes {
 }
 
 export interface SessionInput
-  extends Optional<SessionAttributes, 'createdAt' | 'updatedAt' | 'valid'> {}
-export interface SessionOutput extends Required<SessionAttributes> {}
+  extends Optional<SessionAttributes, 'createdAt' | 'updatedAt' | 'valid' | 'session_id'> {}
+export interface SessionOutput
+  extends Optional<SessionAttributes, 'valid' | 'user_agent' | 'user_id'> {}
 
 class Session extends Model<SessionAttributes, SessionInput> implements SessionAttributes {
+  public session_id!: string;
   public user_id!: string;
   public user_agent!: string;
   public valid!: boolean;
@@ -25,9 +28,12 @@ class Session extends Model<SessionAttributes, SessionInput> implements SessionA
 
 Session.init(
   {
+    session_id: {
+      type: DataTypes.STRING,
+      primaryKey: true
+    },
     user_id: {
       type: DataTypes.STRING,
-      primaryKey: true,
       references: {
         model: 'Users',
         key: 'user_id'

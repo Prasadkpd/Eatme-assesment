@@ -3,8 +3,9 @@ import configurations from 'config';
 import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
-import { authenticateAndSyncDatabase, logger } from './utils';
+import { deserializeUser } from './middleware/deserializeUser';
 import apiRouter from './routes/routes';
+import { authenticateAndSyncDatabase, logger } from './utils';
 
 const port = configurations.get<number>('port');
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(deserializeUser);
 
 app.use('/api/v1', apiRouter);
 
