@@ -1,6 +1,5 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../../../config/db';
-import Session from './Session.model';
 
 interface ResturentAttributes {
   resturent_id: string;
@@ -18,7 +17,7 @@ interface ResturentAttributes {
 
 export interface ResturentInput extends Optional<ResturentAttributes, 'resturent_id'> {}
 
-export interface ResturentOuput extends Required<ResturentAttributes> {}
+export interface ResturentOutput extends Required<ResturentAttributes> {}
 
 class Resturent extends Model<ResturentAttributes, ResturentInput> implements ResturentAttributes {
   public resturent_id!: string;
@@ -78,7 +77,5 @@ Resturent.init(
     paranoid: true
   }
 );
-
-Resturent.hasOne(Session, { foreignKey: 'user_id' });
 
 export default Resturent;
