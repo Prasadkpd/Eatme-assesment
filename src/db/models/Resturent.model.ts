@@ -10,6 +10,7 @@ interface ResturentAttributes {
   state: string;
   zip: string;
   phone_no: string;
+  is_active?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;
@@ -28,6 +29,7 @@ class Resturent extends Model<ResturentAttributes, ResturentInput> implements Re
   public state!: string;
   public zip!: string;
   public phone_no!: string;
+  public is_active!: boolean;
 
   // timestamps!
   public readonly createdAt!: Date;
@@ -69,6 +71,10 @@ Resturent.init(
     phone_no: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    is_active: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
   },
   {
