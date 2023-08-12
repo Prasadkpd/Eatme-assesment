@@ -12,8 +12,7 @@ interface SessionAttributes {
 
 export interface SessionInput
   extends Optional<SessionAttributes, 'createdAt' | 'updatedAt' | 'valid' | 'session_id'> {}
-export interface SessionOutput
-  extends Optional<SessionAttributes, 'valid' | 'user_agent' | 'user_id'> {}
+export interface SessionOutput extends Required<SessionAttributes> {}
 
 class Session extends Model<SessionAttributes, SessionInput> implements SessionAttributes {
   public session_id!: string;
