@@ -27,7 +27,7 @@ export const create = async (payload: UserInput): Promise<UserOutput> => {
   return user;
 };
 
-export const update = async (id: number, payload: Partial<UserInput>): Promise<UserOutput> => {
+export const update = async (id: string, payload: Partial<UserInput>): Promise<UserOutput> => {
   const user = await User.findByPk(id);
   if (!User) {
     throw new Error('not found');
@@ -36,7 +36,7 @@ export const update = async (id: number, payload: Partial<UserInput>): Promise<U
   return updatedUser;
 };
 
-export const getById = async (id: number): Promise<UserOutput> => {
+export const getById = async (id: string): Promise<UserOutput> => {
   const user = await User.findByPk(id);
   if (!user) {
     throw new Error('not found');
@@ -44,7 +44,7 @@ export const getById = async (id: number): Promise<UserOutput> => {
   return user;
 };
 
-export const deleteById = async (id: number): Promise<boolean> => {
+export const deleteById = async (id: string): Promise<boolean> => {
   const deletedUserCount = await User.destroy({
     where: { user_id: id }
   });

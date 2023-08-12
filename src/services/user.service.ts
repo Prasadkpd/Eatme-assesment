@@ -7,15 +7,15 @@ export const create = async (payload: UserInput): Promise<UserOutput> => {
   return createdUser;
 };
 
-export const update = (id: number, payload: Partial<UserInput>): Promise<UserOutput> => {
+export const update = (id: string, payload: Partial<UserInput>): Promise<UserOutput> => {
   return UserDal.update(id, payload);
 };
 
-export const getById = (id: number): Promise<UserOutput> => {
-  return UserDal.getById(id);
+export const getById = (user_id: string): Promise<UserOutput> => {
+  return UserDal.getById(user_id);
 };
 
-export const deleteById = (id: number): Promise<boolean> => {
+export const deleteById = (id: string): Promise<boolean> => {
   return UserDal.deleteById(id);
 };
 

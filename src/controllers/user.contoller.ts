@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { CreateUserInput } from '../schema/user.schema';
-import { create, getAll } from '../services/user.service';
+import { create, getAll, getById } from '../services/user.service';
 import logger from '../utils/logger';
 import { hashPassword } from '../utils/passwordUtils';
 
@@ -21,6 +21,17 @@ export async function createUserHandler(
     return res.status(409).send(e.message);
   }
 }
+export async function getUserByIdHandler(req: Request, res: Response) {
+  try {
+    const id = req.params.id;
+    const user = await getById(id);
+    return res.send(user);
+  } catch (e: any) {
+    logger.error(e);
+    return res.status(409).send(e.message);
+  }
+}
+
 export async function getAllUserHandler(req: Request, res: Response) {
   try {
     const users = await getAll({});
