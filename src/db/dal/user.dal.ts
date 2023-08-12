@@ -1,13 +1,33 @@
 import { Op } from 'sequelize';
-import User, { UserInput, UserOuput } from '../models/User';
+import { v4 as uuidv4 } from 'uuid';
+import User, { UserInput, UserOutput } from '../models/User.model';
 import { GetAllUsersFilters } from './types';
 
-export const create = async (payload: UserInput): Promise<UserOuput> => {
-  const user = await User.create(payload);
+export const create = async (payload: UserInput): Promise<UserOutput> => {
+  const { email } = payload;
+
+  const existingUser = await User.findOne({
+    where: {
+      email: {
+        [Op.eq]: email
+      }
+    }
+  });
+
+  if (existingUser) {
+    throw new Error('Email already exists');
+  }
+  const user_id = uuidv4();
+
+  const user = await User.create({
+    ...payload,
+    user_id
+  });
+
   return user;
 };
 
-export const update = async (id: number, payload: Partial<UserInput>): Promise<UserOuput> => {
+export const update = async (id: number, payload: Partial<UserInput>): Promise<UserOutput> => {
   const user = await User.findByPk(id);
   if (!User) {
     throw new Error('not found');
@@ -16,7 +36,7 @@ export const update = async (id: number, payload: Partial<UserInput>): Promise<U
   return updatedUser;
 };
 
-export const getById = async (id: number): Promise<UserOuput> => {
+export const getById = async (id: number): Promise<UserOutput> => {
   const user = await User.findByPk(id);
   if (!user) {
     throw new Error('not found');
@@ -31,7 +51,7 @@ export const deleteById = async (id: number): Promise<boolean> => {
   return !!deletedUserCount;
 };
 
-export const getAll = async (filters?: GetAllUsersFilters): Promise<UserOuput[]> => {
+export const getAll = async (filters?: GetAllUsersFilters): Promise<UserOutput[]> => {
   let whereClause = {};
 
   if (filters?.isInActive) {

@@ -4,6 +4,7 @@ import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
 import { authenticateAndSyncDatabase, logger } from './utils';
+import apiRouter from './routes/routes';
 
 const port = configurations.get<number>('port');
 
@@ -14,7 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+
 app.use('/api/v1', apiRouter);
+
 authenticateAndSyncDatabase();
 
 app.listen(port, () => {

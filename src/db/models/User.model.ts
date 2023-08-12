@@ -1,27 +1,31 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../../../config/db';
+import Session from './Session.model';
 
 type UserType = 'Customer' | 'Admin';
 
 interface UserAttributes {
-  user_id: number;
+  user_id: string;
   first_name: string;
   last_name: string;
   email: string;
+  password: string;
   is_active?: boolean;
   user_type?: UserType;
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;
 }
+type UserOutputFields = Exclude<keyof UserAttributes, 'password'>;
+export type UserOutput = Pick<UserAttributes, UserOutputFields>;
 export type UserInput = Optional<UserAttributes, 'user_id'>;
-export type UserOuput = Required<UserAttributes>;
 
 class User extends Model<UserAttributes, UserInput> implements UserAttributes {
-  public user_id!: number;
+  public user_id!: string;
   public first_name!: string;
   public last_name!: string;
   public email!: string;
+  public password!: string;
   public is_active!: boolean;
   public user_type!: UserType;
 
@@ -34,8 +38,7 @@ class User extends Model<UserAttributes, UserInput> implements UserAttributes {
 User.init(
   {
     user_id: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      autoIncrement: true,
+      type: DataTypes.STRING,
       primaryKey: true
     },
     first_name: {
@@ -50,6 +53,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     is_active: {
       type: DataTypes.BOOLEAN,
@@ -67,5 +74,7 @@ User.init(
     paranoid: true
   }
 );
+
+User.hasOne(Session, { foreignKey: 'user_id' });
 
 export default User;
