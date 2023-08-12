@@ -10,3 +10,5 @@ const createUser = (req: Request, res: Response) => {
 };
 
 userRouter.route('/').post(validate(createUserSchema), createUser);
+
+export default userRouter;
