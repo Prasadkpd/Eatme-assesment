@@ -24,7 +24,7 @@ const refreshTokenCookieOption = {
   maxAge: 3.154e10
 };
 
-export async function createUserSessionHandler (req: Request, res: Response) {
+export async function createUserSessionHandler(req: Request, res: Response) {
   try {
     const user = await validatePassword(req.body);
 
@@ -58,14 +58,14 @@ export async function createUserSessionHandler (req: Request, res: Response) {
   }
 }
 
-export async function getUserSessionHandler (req: Request, res: Response) {
+export async function getUserSessionHandler(req: Request, res: Response) {
   const userId = res.locals.user.user_id;
   const sessions = await getSessionByUserId(userId);
 
   return res.send(sessions);
 }
 
-export async function deleteSessionHandler (req: Request, res: Response) {
+export async function deleteSessionHandler(req: Request, res: Response) {
   const sessionId = res.locals.user.session;
   await update(sessionId, { valid: false });
 
@@ -75,7 +75,7 @@ export async function deleteSessionHandler (req: Request, res: Response) {
   });
 }
 
-export async function googleOAuthHandler (req: Request, res: Response) {
+export async function googleOAuthHandler(req: Request, res: Response) {
   try {
     const code = req.query.code as string;
     const { id_token, access_token } = await getGoogleOAuthTokens({ code });

@@ -24,7 +24,7 @@ import { object, string, TypeOf } from 'zod';
  *          default: Doe
  *        type:
  *          type: string
- *          default:Customer
+ *          default: Customer
  *        password:
  *          type: string
  *          default: stringPassword123
