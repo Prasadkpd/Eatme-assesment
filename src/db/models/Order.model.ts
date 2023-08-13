@@ -19,7 +19,7 @@ interface OrderAttributes {
 }
 
 export interface OrderInput
-  extends Optional<OrderAttributes, 'order_id' | 'status' | 'is_active'> { }
+  extends Optional<OrderAttributes, 'order_id' | 'status' | 'is_active'> {}
 
 export interface OrderOutput extends Required<OrderAttributes> {
   orderDishes: OrderDish[];

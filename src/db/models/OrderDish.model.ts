@@ -17,7 +17,7 @@ interface OrderDishAttributes {
 }
 
 export interface OrderDishInput
-  extends Optional<OrderDishAttributes, 'is_active' | 'order_dish_id'> { }
+  extends Optional<OrderDishAttributes, 'is_active' | 'order_dish_id'> {}
 
 export interface OrderDishOutput extends Required<OrderDishAttributes> {
   dish: Dish;
