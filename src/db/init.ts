@@ -12,7 +12,7 @@ const dbInit = () => {
   Resturent.sync({ force: false });
   Dish.sync({ force: false });
   Order.sync({ force: false });
-  OrderDish.sync({ force: true });
+  OrderDish.sync({ force: false });
 };
 
 export default dbInit;
