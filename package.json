@@ -7,6 +7,7 @@
     "node": "16"
   },
   "scripts": {
+    "start": "concurrently \"yarn dev\" \"yarn run client\"",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -14,7 +15,8 @@
     "prettier:fix": "prettier --write 'src/**/*.ts'",
     "prepare": "husky install",
     "build": "rimraf build && tsc -p tsconfig.json",
-    "test":"jest"
+    "test": "jest",
+    "client": "cd client && yarn start"
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
@@ -53,6 +55,7 @@
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
+    "concurrently": "^8.2.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
