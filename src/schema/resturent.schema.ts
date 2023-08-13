@@ -24,26 +24,28 @@ import { object, string, TypeOf } from 'zod';
  */
 
 export const restaurantSchema = object({
-  name: string({
-    required_error: 'Name is required'
-  }),
-  cuisine: string({
-    required_error: 'Cuisine is required'
-  }),
-  address: string({
-    required_error: 'Address is required'
-  }),
-  city: string({
-    required_error: 'City is required'
-  }),
-  state: string({
-    required_error: 'State is required'
-  }),
-  zip: string({
-    required_error: 'Zip code is required'
-  }),
-  phone_no: string({
-    required_error: 'Phone number is required'
+  body: object({
+    name: string({
+      required_error: 'Name is required'
+    }),
+    cuisine: string({
+      required_error: 'Cuisine is required'
+    }),
+    address: string({
+      required_error: 'Address is required'
+    }),
+    city: string({
+      required_error: 'City is required'
+    }),
+    state: string({
+      required_error: 'State is required'
+    }),
+    zip: string({
+      required_error: 'Zip code is required'
+    }),
+    phone_no: string({
+      required_error: 'Phone number is required'
+    })
   })
 });
 

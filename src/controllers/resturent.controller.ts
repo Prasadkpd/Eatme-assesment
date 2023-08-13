@@ -4,12 +4,11 @@ import { create, getAll, getById, update } from '../services/resturent.service';
 import logger from '../utils/logger';
 
 export async function createResturentHandler(
-  req: Request<object, object, CreateRestaurantInput>,
+  req: Request<object, object, CreateRestaurantInput['body']>,
   res: Response
 ) {
   try {
-    const restaurantData = req.body;
-    const resturent = await create(restaurantData);
+    const resturent = await create(req.body);
     return res.send(resturent);
   } catch (e: any) {
     logger.error(e);
