@@ -1,13 +1,9 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../../../config/db';
+import Dish from './Dish.model';
 import OrderDish from './OrderDish.model';
 
-enum OrderStatus {
-  Pending = 'Pending',
-  InProgress = 'Inprogress',
-  Completed = 'Completed',
-  Canceled = 'Canceled'
-}
+type OrderStatus = 'Pending' | 'Inprogress' | 'Completed' | 'Canceled';
 
 interface OrderAttributes {
   order_id: number;
@@ -23,7 +19,7 @@ interface OrderAttributes {
 }
 
 export interface OrderInput
-  extends Optional<OrderAttributes, 'order_id' | 'status' | 'is_active'> {}
+  extends Optional<OrderAttributes, 'order_id' | 'status' | 'is_active'> { }
 
 export interface OrderOutput extends Required<OrderAttributes> {
   orderDishes: OrderDish[];
@@ -53,18 +49,18 @@ Order.init(
       primaryKey: true
     },
     resturent_id: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      references: {
-        model: 'Resturents',
-        key: 'resturent_id'
-      }
+      type: DataTypes.INTEGER.UNSIGNED
+      // references: {
+      //   model: 'Resturents',
+      //   key: 'resturent_id'
+      // }
     },
     user_id: {
-      type: DataTypes.STRING,
-      references: {
-        model: 'Users',
-        key: 'user_id'
-      }
+      type: DataTypes.STRING
+      // references: {
+      //   model: 'Users',
+      //   key: 'user_id'
+      // }
     },
     total: {
       type: DataTypes.FLOAT,
@@ -73,7 +69,7 @@ Order.init(
     status: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: OrderStatus.Pending
+      defaultValue: 'Pending'
     },
     is_active: {
       type: DataTypes.BOOLEAN,
@@ -87,6 +83,12 @@ Order.init(
   }
 );
 
-Order.hasMany(OrderDish, { foreignKey: 'order_id' });
+Order.belongsToMany(Dish, {
+  through: OrderDish,
+  foreignKey: 'order_id',
+  as: 'dishes'
+});
+
+Dish.belongsToMany(Order, { through: OrderDish, foreignKey: 'dish_id', as: 'orders' });
 
 export default Order;

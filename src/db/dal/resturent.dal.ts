@@ -1,3 +1,4 @@
+import Dish from '../models/Dish.model';
 import Resturent, { ResturentInput, ResturentOutput } from '../models/Resturent.model';
 
 export const create = async (payload: ResturentInput): Promise<ResturentOutput> => {
@@ -33,5 +34,7 @@ export const deleteById = async (id: number): Promise<boolean> => {
 };
 
 export const getAll = async (): Promise<ResturentOutput[]> => {
-  return Resturent.findAll();
+  return Resturent.findAll({
+    include: [{ model: Dish }]
+  });
 };

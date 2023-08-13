@@ -8,11 +8,11 @@ const isDev = process.env.NODE_ENV === 'development';
 
 const dbInit = () => {
   User.sync({ alter: isDev, force: false });
-  Session.sync({ alter: isDev, force: false });
-  Resturent.sync({ alter: false, force: false });
-  Dish.sync({ alter: false, force: false });
+  Session.sync({ force: false });
+  Resturent.sync({ force: false });
+  Dish.sync({ force: false });
   Order.sync({ force: false });
-  OrderDish.sync({ force: false });
+  OrderDish.sync({ force: true });
 };
 
 export default dbInit;

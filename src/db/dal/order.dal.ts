@@ -27,10 +27,19 @@ export const update = async (id: number, payload: Partial<OrderInput>): Promise<
 };
 
 export const getById = async (id: number): Promise<OrderOutput> => {
-  const order = await Order.findByPk(id);
+  const order = await Order.findByPk(id, {
+    include: [
+      {
+        model: Dish,
+        as: 'dishes'
+      }
+    ]
+  });
+
   if (!order) {
-    throw new Error('not found');
+    throw new Error('Order not found');
   }
+
   return order;
 };
 
@@ -42,7 +51,16 @@ export const deleteById = async (id: number): Promise<boolean> => {
 };
 
 export const getAll = async (): Promise<OrderOutput[]> => {
-  return Order.findAll();
+  const orders = await Order.findAll({
+    include: [
+      {
+        model: Dish,
+        as: 'dishes'
+      }
+    ]
+  });
+
+  return orders;
 };
 
 export const getByResturentId = async (resturent_id: number): Promise<OrderOutput[]> => {

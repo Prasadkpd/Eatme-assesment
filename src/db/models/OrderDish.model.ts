@@ -1,7 +1,9 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../../../config/db';
+import Dish from './Dish.model';
 
 interface OrderDishAttributes {
+  order_dish_id: number;
   order_id: number;
   dish_id: number;
   quantity: number;
@@ -14,11 +16,15 @@ interface OrderDishAttributes {
   deletedAt?: Date;
 }
 
-export interface OrderDishInput extends Optional<OrderDishAttributes, 'is_active'> {}
+export interface OrderDishInput
+  extends Optional<OrderDishAttributes, 'is_active' | 'order_dish_id'> { }
 
-export interface OrderDishOutput extends Required<OrderDishAttributes> {}
+export interface OrderDishOutput extends Required<OrderDishAttributes> {
+  dish: Dish;
+}
 
 class OrderDish extends Model<OrderDishAttributes, OrderDishInput> implements OrderDishAttributes {
+  public order_dish_id!: number;
   public order_id!: number;
   public dish_id!: number;
   public quantity!: number;
@@ -30,13 +36,19 @@ class OrderDish extends Model<OrderDishAttributes, OrderDishInput> implements Or
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt!: Date;
+
+  public dish!: Dish;
 }
 
 OrderDish.init(
   {
+    order_dish_id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true
+    },
     order_id: {
       type: DataTypes.INTEGER.UNSIGNED,
-      primaryKey: true,
       references: {
         model: 'Orders',
         key: 'order_id'
@@ -44,7 +56,6 @@ OrderDish.init(
     },
     dish_id: {
       type: DataTypes.INTEGER.UNSIGNED,
-      primaryKey: true,
       references: {
         model: 'Dishes',
         key: 'dish_id'

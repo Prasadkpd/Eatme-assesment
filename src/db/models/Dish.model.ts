@@ -1,6 +1,5 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../../../config/db';
-import OrderDish from './OrderDish.model';
 
 interface DishAttributes {
   dish_id: number;
@@ -94,7 +93,5 @@ Dish.init(
     paranoid: true
   }
 );
-
-Dish.hasMany(OrderDish, { foreignKey: 'dish_id' });
 
 export default Dish;

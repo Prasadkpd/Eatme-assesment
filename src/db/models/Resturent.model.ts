@@ -36,6 +36,8 @@ class Resturent extends Model<ResturentAttributes, ResturentInput> implements Re
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt!: Date;
+
+  public dishes!: Dish[];
 }
 
 Resturent.init(
