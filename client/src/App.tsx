@@ -1,8 +1,14 @@
+import { ConfigProvider } from 'antd';
+import './assets/styles/main.scss';
+import { getGoogleOAuthURL } from './utils/getGoogleUrl';
 
 function App () {
   return (
-    <h1>Hello World</h1>
-  );
+    <ConfigProvider>
+
+      <a style={ { color: 'red' } } href={getGoogleOAuthURL() }>Hello</a>
+    </ConfigProvider>
+  )
 }
 
 export default App;

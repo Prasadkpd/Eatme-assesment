@@ -1,0 +1,33 @@
+.footer {
+    background-color: $footer-bg;
+    margin: 0 !important;
+    color: $white;
+    padding: 1em 2em;
+
+    .footer-col {
+        height: 50vh;
+        background-color: $fooer-col-bg;
+        padding: 2em 1em;
+        font-family: 'IBM Plex Sans', sans-serif !important;
+        font-size: 14px;
+        border-radius: 3px;
+        
+        h3 {
+            margin-top: 0 !important;
+            font-size: 18px !important;
+        }
+
+        .ant-typography {
+            color: $white !important;
+        }
+
+        a {
+            font-size: 14px;
+            display: block;
+        }
+
+        a:hover {
+            color: $primary !important;
+        }
+    }
+}
