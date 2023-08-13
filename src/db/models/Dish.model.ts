@@ -1,78 +1,85 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../../../config/db';
-import Dish from './Dish.model';
 
-interface ResturentAttributes {
+interface DishAttributes {
+  dish_id: number;
   resturent_id: number;
   name: string;
-  cuisine: string;
-  address: string;
-  city: string;
-  state: string;
-  zip: string;
-  phone_no: string;
-  is_active?: boolean;
+  price: string;
+  description: string;
+  category: string;
+  image: string;
+  rating: string;
+  rate_count: number;
+  is_active: boolean;
+
   createdAt?: Date;
   updatedAt?: Date;
   deletedAt?: Date;
 }
 
-export interface ResturentInput extends Optional<ResturentAttributes, 'resturent_id'> {}
+export interface DishInput extends Optional<DishAttributes, 'dish_id' | 'is_active'> {}
 
-export interface ResturentOutput extends Required<ResturentAttributes> {}
+export interface DishOutput extends Required<DishAttributes> {}
 
-class Resturent extends Model<ResturentAttributes, ResturentInput> implements ResturentAttributes {
+class Dish extends Model<DishAttributes, DishInput> implements DishAttributes {
+  public dish_id!: number;
   public resturent_id!: number;
   public name!: string;
-  public cuisine!: string;
-  public address!: string;
-  public city!: string;
-  public state!: string;
-  public zip!: string;
-  public phone_no!: string;
+  public price!: string;
+  public description!: string;
+  public category!: string;
+  public image!: string;
+  public rating!: string;
+  public rate_count!: number;
   public is_active!: boolean;
 
   // timestamps!
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   public readonly deletedAt!: Date;
-
-  public dishes!: Dish[];
 }
 
-Resturent.init(
+Dish.init(
   {
-    resturent_id: {
+    dish_id: {
       type: DataTypes.INTEGER.UNSIGNED,
       autoIncrement: true,
       primaryKey: true
+    },
+    resturent_id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      references: {
+        model: 'Resturents',
+        key: 'resturent_id'
+      }
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    cuisine: {
+    price: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    address: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    city: {
+    category: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    state: {
+    image: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    zip: {
+    rating: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    phone_no: {
-      type: DataTypes.STRING,
+    rate_count: {
+      type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false
     },
     is_active: {
@@ -87,6 +94,4 @@ Resturent.init(
   }
 );
 
-Resturent.hasMany(Dish, { foreignKey: 'resturent_id' });
-
-export default Resturent;
+export default Dish;

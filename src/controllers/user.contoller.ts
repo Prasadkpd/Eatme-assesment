@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { CreateUserInput } from '../schema/user.schema';
-import { create, getAll, getById } from '../services/user.service';
+import { create, getAll, getById, update } from '../services/user.service';
 import logger from '../utils/logger';
 import { hashPassword } from '../utils/passwordUtils';
 
@@ -36,6 +36,28 @@ export async function getAllUserHandler(req: Request, res: Response) {
   try {
     const users = await getAll({});
     return res.send(users);
+  } catch (e: any) {
+    logger.error(e);
+    return res.status(409).send(e.message);
+  }
+}
+
+export async function updateUserHandler(req: Request, res: Response) {
+  try {
+    const id = req.params.id;
+    const user = await update(id, req.body);
+    return res.send(user);
+  } catch (e: any) {
+    logger.error(e);
+    return res.status(409).send(e.message);
+  }
+}
+
+export async function deleteUserHandler(req: Request, res: Response) {
+  try {
+    const id = req.params.id;
+    const user = await update(id, { is_active: false });
+    return res.send(user);
   } catch (e: any) {
     logger.error(e);
     return res.status(409).send(e.message);

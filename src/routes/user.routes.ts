@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   createUserHandler,
+  deleteUserHandler,
   getAllUserHandler,
   getUserByIdHandler
 } from '../controllers/user.contoller';
@@ -14,5 +15,9 @@ userRouter.route('/').post(validate(createUserSchema), createUserHandler);
 userRouter.route('/').get(getAllUserHandler);
 
 userRouter.route('/:id').get(getUserByIdHandler);
+
+userRouter.route('/:id').put(deleteUserHandler);
+
+userRouter.route('/:id').delete(deleteUserHandler);
 
 export default userRouter;
