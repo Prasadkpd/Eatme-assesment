@@ -18,7 +18,7 @@ export async function createResturentHandler(
 }
 export async function getResturentByIdHandler(req: Request, res: Response) {
   try {
-    const id = req.params.id;
+    const id = Number(req.params.id);
     const resturent = await getById(id);
     return res.send(resturent);
   } catch (e: any) {
@@ -39,7 +39,7 @@ export async function getAllResturentHandler(req: Request, res: Response) {
 
 export async function updateResturentHandler(req: Request, res: Response) {
   try {
-    const id = req.params.id;
+    const id = Number(req.params.id);
     const resturent = await update(id, req.body);
     return res.send(resturent);
   } catch (e: any) {
@@ -50,7 +50,7 @@ export async function updateResturentHandler(req: Request, res: Response) {
 
 export async function deleteResturentHandler(req: Request, res: Response) {
   try {
-    const id = req.params.id;
+    const id = Number(req.params.id);
     const resturent = await update(id, { is_active: false });
     return res.send(resturent);
   } catch (e: any) {

@@ -18,7 +18,7 @@ interface DishAttributes {
   deletedAt?: Date;
 }
 
-export interface DishInput extends Optional<DishAttributes, 'dish_id'> {}
+export interface DishInput extends Optional<DishAttributes, 'dish_id' | 'is_active'> {}
 
 export interface DishOutput extends Required<DishAttributes> {}
 
