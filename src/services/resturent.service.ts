@@ -6,15 +6,15 @@ export const create = async (payload: ResturentInput): Promise<ResturentOutput> 
   return createdResturent;
 };
 
-export const update = (id: string, payload: Partial<ResturentInput>): Promise<ResturentOutput> => {
+export const update = (id: number, payload: Partial<ResturentInput>): Promise<ResturentOutput> => {
   return ResturentDal.update(id, payload);
 };
 
-export const getById = (id: string): Promise<ResturentOutput> => {
+export const getById = (id: number): Promise<ResturentOutput> => {
   return ResturentDal.getById(id);
 };
 
-export const deleteById = (id: string): Promise<boolean> => {
+export const deleteById = (id: number): Promise<boolean> => {
   return ResturentDal.deleteById(id);
 };
 

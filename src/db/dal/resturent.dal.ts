@@ -1,14 +1,12 @@
-import { v4 as uuidv4 } from 'uuid';
 import Resturent, { ResturentInput, ResturentOutput } from '../models/Resturent.model';
 
 export const create = async (payload: ResturentInput): Promise<ResturentOutput> => {
-  const resturent_id = uuidv4();
-  const resturent = await Resturent.create({ ...payload, resturent_id });
+  const resturent = await Resturent.create(payload);
   return resturent;
 };
 
 export const update = async (
-  id: string,
+  id: number,
   payload: Partial<ResturentInput>
 ): Promise<ResturentOutput> => {
   const resturent = await Resturent.findByPk(id);
@@ -19,7 +17,7 @@ export const update = async (
   return updatedResturent;
 };
 
-export const getById = async (id: string): Promise<ResturentOutput> => {
+export const getById = async (id: number): Promise<ResturentOutput> => {
   const resturent = await Resturent.findByPk(id);
   if (!resturent) {
     throw new Error('not found');
@@ -27,7 +25,7 @@ export const getById = async (id: string): Promise<ResturentOutput> => {
   return resturent;
 };
 
-export const deleteById = async (id: string): Promise<boolean> => {
+export const deleteById = async (id: number): Promise<boolean> => {
   const deletedResturentCount = await Resturent.destroy({
     where: { resturent_id: id }
   });
