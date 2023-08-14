@@ -1,49 +1,11 @@
-.image {
-    width: 20vw;
+.navbar {
 
-    &-header {}
-}
+    .search-bar {
+        width: 45vw;
 
-.search {
-    width: 50vw;
-}
-
-.buttons {
-    width: 30vw;
-
-    &-header {
-        width: 80vw !important;
-        align-items: right !important;
-        text-align: right !important;
-        justify-content: end;
-        padding-right: 100px;
-        display: flex;
+        &:hover{
+            border: 2px solid balck !important;
+        }
     }
-}
 
-.icons-button {
-    color: #00ccbc;
-    font-size: 16px;
-    font-weight: 800;
-    margin-right: 5px;
-}
-
-.input {
-    &-search {
-        width: 200% !important;
-        border: none !important;
-        outline: none !important;
-    }
-}
-
-.control {
-    &-search {
-        width: 90%;
-        margin: 15px;
-        padding-right: 20px;
-        display: flex;
-        border: 1px solid black;
-        padding-left: 20px;
-        border-radius: 8px;
-    }
 }

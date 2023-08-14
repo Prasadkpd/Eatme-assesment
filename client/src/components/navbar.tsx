@@ -1,25 +1,32 @@
-const NavBar = () => {
+import { FiSearch } from 'react-icons/fi';
+const Navbar = () => {
     return (
-        <nav className="navbar py-4 ml-4" role="navigation" aria-label="main navigation">
-            <div className="navbar-brand ml-4">
-                <a className="navbar-item" href="https://bulma.io">
-                    <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28" />
-                </a>
-                <div className="container">
-                    <div className="field has-addons">
-                        <div className="control">
-                            <input className="input is-medium" type="text" placeholder="Search..." />
-                        </div>
-                        <div className="control">
-                            <button className="button is-medium is">
-                               
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        <nav className="navbar ml-6 my-3" role="navigation" aria-label="main navigation">
+            <div className="navbar-brand ml-4 navbar-item">
+                <img src="https://consumer-component-library.roocdn.com/26.21.0/static/images/logo-teal.svg" alt="Logo" />
             </div>
+
+            <div className="navbar-item field ml-6 my-auto">
+                <p className="control has-icons-left search-bar">
+                    <span className="icon is-small is-right">
+                        <FiSearch size={ 18 } />
+                    </span>
+                    <input className="input" type="search" placeholder="Search..." />
+                </p>
+            </div>
+
+            <div className="navbar-end">
+                <a className="navbar-item is-primary" href="#">
+                    Button 1
+                </a>
+                <a className="navbar-item" href="#">
+                    Button 2
+                </a>
+            </div>
+
         </nav>
+
     )
 }
 
-export default NavBar
+export default Navbar;
