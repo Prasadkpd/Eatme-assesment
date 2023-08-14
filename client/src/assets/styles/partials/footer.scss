@@ -1,6 +1,9 @@
 .footer {
     background-color: $footer-bg;
     padding: 3rem 1.5rem !important;
+    position: fixed;
+    width: 100vw !important;
+    bottom: 0 !important;
 
     .footer-con {
         width: 80vw;
@@ -25,7 +28,7 @@
     }
 
     .content {
-        color: $white!important;
+        color: $white !important;
 
         ul {
             margin-left: .5em !important;
