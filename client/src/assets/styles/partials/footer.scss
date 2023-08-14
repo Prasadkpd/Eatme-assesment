@@ -1,33 +1,57 @@
 .footer {
     background-color: $footer-bg;
-    margin: 0 !important;
-    color: $white;
-    padding: 1em 2em;
+    padding: 3rem 1.5rem !important;
 
-    .footer-col {
-        height: 50vh;
+    .footer-con {
+        width: 80vw;
+        margin: 1em auto !important;
+    }
+
+    .tile {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .card {
         background-color: $fooer-col-bg;
-        padding: 2em 1em;
-        font-family: 'IBM Plex Sans', sans-serif !important;
+        padding: 10px !important;
+    }
+
+    .subtitle {
+        color: $white !important;
+        align-items: start;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .content {
+        color: $white!important;
+
+        ul {
+            margin-left: .5em !important;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+    }
+
+    .list {
+        list-style: none !important;
+        justify-content: left !important;
+        align-items: left !important;
+        text-align: left !important;
+    }
+
+    .list li {
+        font-weight: 500;
+    }
+
+    .list a {
         font-size: 14px;
-        border-radius: 3px;
-        
-        h3 {
-            margin-top: 0 !important;
-            font-size: 18px !important;
-        }
+        text-decoration: none !important;
+        cursor: pointer;
+    }
 
-        .ant-typography {
-            color: $white !important;
-        }
-
-        a {
-            font-size: 14px;
-            display: block;
-        }
-
-        a:hover {
-            color: $primary !important;
-        }
+    .link:hover {
+        color: $primary !important;
     }
 }

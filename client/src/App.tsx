@@ -1,14 +1,19 @@
-import { ConfigProvider } from 'antd';
+import 'bulma/css/bulma.css';
 import './assets/styles/main.scss';
-import { getGoogleOAuthURL } from './utils/getGoogleUrl';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login/Login';
 
 function App () {
   return (
-    <ConfigProvider>
-
-      <a style={ { color: 'red' } } href={getGoogleOAuthURL() }>Hello</a>
-    </ConfigProvider>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={ <Home /> } />
+        <Route path="/login" element={ <Login /> } />
+        {/* <Route path="/signup" element={ <Signup /> } /> */}
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
