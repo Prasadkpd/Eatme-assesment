@@ -1,1 +1,1 @@
-export const baseUrl = 'hello'
+export const baseUrl = 'hello';
