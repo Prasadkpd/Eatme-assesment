@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-
-const Footer = () => {
+import { Footer } from 'react-bulma-components';
+const FooterCom = () => {
   return (
-    <footer className="footer">
+    <Footer>
       <div className="content has-text-centered footer-con">
         <div className="tile is-ancestor">
           <div className="tile is-vertical is-12">
@@ -165,8 +165,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </Footer>
   );
 };
 
-export default Footer;
+export default FooterCom;

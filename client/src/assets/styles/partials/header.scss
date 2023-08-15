@@ -1,4 +1,11 @@
 .navbar {
+    background-color: $white !important;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset !important;
+
+    .brand-img {
+        width: 12vw !important;
+    }
+
     .search-bar {
         width: 45vw;
 
@@ -17,4 +24,23 @@
         outline: 2px solid black !important;
     }
 
+}
+
+.tab-bar {
+    border-top: 2px solid #f4f4f4;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px !important;
+    .tab-btn {
+        color: $primary !important;
+        font-weight: 800 !important;
+        font-size: 12px;
+        padding-top: 4px;
+    }
+
+    .is-rounded {
+        color: $white !important;
+    }
+
+    .is-inverted {
+        color: $primary !important;
+    }
 }
