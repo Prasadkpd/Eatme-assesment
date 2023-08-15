@@ -2,8 +2,11 @@ import { Button } from 'react-bulma-components';
 import { BiHomeAlt } from 'react-icons/bi';
 import { FaRegUser } from 'react-icons/fa';
 import { FiSearch } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
     <nav className="navbar mx-6 my-3" role="navigation" aria-label="main navigation">
       <div className="navbar-brand ml-4 navbar-item">
@@ -27,7 +30,7 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-end">
-        <Button className="primary mr-3">
+        <Button className="primary mr-3" onClick={() => navigate('/login')}>
           <BiHomeAlt className="mr-2 primary-icons" />
           Sign up Or Login
         </Button>

@@ -9,6 +9,7 @@ const AppRouter = () => {
     <HashRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Login />} />
         <Route element={<ProtectedPage userRole="admin" />}>
           <Route path="/dashboard" element={<Home />} />
         </Route>

@@ -1,11 +1,20 @@
 .navbar {
-
     .search-bar {
         width: 45vw;
 
-        &:hover{
+        &:hover {
             border: 2px solid balck !important;
         }
+    }
+
+    .input:hover {
+        outline: 2px solid black !important;
+    }
+
+    .input:active,
+    .input:focus {
+        border: none !important;
+        outline: 2px solid black !important;
     }
 
 }
