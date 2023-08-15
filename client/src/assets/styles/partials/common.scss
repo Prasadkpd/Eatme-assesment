@@ -7,16 +7,6 @@ body {
     padding: 0 !important;
 }
 
-.input:hover {
-    outline: 2px solid black !important;
-}
-
-.input:active,
-.input:focus {
-    border: none !important;
-    outline: 2px solid black !important;
-}
-
 .button:active,
 .button:focus {
     border: none;
@@ -29,4 +19,22 @@ body {
 
 .primary-icons {
     color: $primary !important;
+}
+
+.sticky-nav {
+    background-color: white;
+    position: -webkit-sticky;
+    position: sticky !important;
+    top: 10vh;
+}
+
+.sticky-box {
+    width: 100%;
+    position: -webkit-sticky;
+    position: sticky !important;
+    top: 30vh;
+}
+
+.is-borderless{
+    border: none !important;
 }

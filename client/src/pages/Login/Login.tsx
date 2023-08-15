@@ -1,81 +1,61 @@
-import { LockOutlined, MailOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, Layout, Row } from 'antd';
-import { passwordValidate } from './actions';
-
+import { Button, Columns, Form, Hero } from 'react-bulma-components';
+import { FcGoogle } from 'react-icons/fc';
+import NavBar from '../../components/navbar';
+import { getGoogleOAuthURL } from '../../utils/getGoogleUrl';
 const Login = () => {
+  const googleOAuthURL = getGoogleOAuthURL();
+
   return (
-    <Layout className="login-form">
-      <Row>
-        <Col>
-          <Form>
-            <Form
-              // initialValues={ { email: localStorage.getItem('email') } }
-              autoComplete="off"
-              layout="vertical"
-              requiredMark={false}
-            >
-              <Form.Item
-                name="email"
-                rules={[
-                  { type: 'email', required: true, message: 'Please input your email here!' }
-                ]}
-              >
-                <Input
-                  defaultValue={'test@gmail.com'}
-                  placeholder="Email Address"
-                  size={'large'}
-                  prefix={<MailOutlined />}
-                />
-              </Form.Item>
-              <Form.Item
-                className="login-password-field"
-                name="password"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your password here!'
-                  },
-                  ({ getFieldValue }) => {
-                    return passwordValidate(getFieldValue('password'));
-                  }
-                ]}
-              >
-                <Input.Password
-                  placeholder="Password"
-                  type="password"
-                  size={'large'}
-                  prefix={<LockOutlined />}
-                  visibilityToggle={true}
-                />
-              </Form.Item>
-              <Form.Item>
-                <Button
-                  type="text"
-                  className="forget-password"
-                  // onClick={ handleForgetPassword }
-                >
-                  Forget Password?
-                </Button>
-              </Form.Item>
-              <Row>
-                <Col span={24} className="submit">
-                  <Button type="primary" htmlType="submit" className="submit-btn">
-                    Login
-                  </Button>
-                </Col>
-              </Row>
-              <Row>
-                <Col className="create-one">
-                  <p>Do not have an account?</p>
-                  <Button type="text">Create One</Button>
-                </Col>
-              </Row>
-            </Form>
-          </Form>
-        </Col>
-      </Row>
-    </Layout>
+    <>
+      <Hero className="is-fullheight login">
+        <NavBar />
+        <Hero.Body className="is-justify-content-center is-align-items-center">
+          <Columns className="is-flex is-flex-direction-column form">
+            <Columns.Column>
+              <Form.Label size="large">Login</Form.Label>
+            </Columns.Column>
+            <Columns.Column>
+              <Form.Field>
+                <Form.Label htmlFor="email">Email</Form.Label>
+              </Form.Field>
+              <Form.Control>
+                <Form.Input placeholder="Email address" type="email" />
+              </Form.Control>
+            </Columns.Column>
+            <Columns.Column>
+              <Form.Field>
+                <Form.Label htmlFor="password">Password</Form.Label>
+              </Form.Field>
+              <Form.Control>
+                <Form.Input placeholder="Password" type="password" />
+              </Form.Control>
+            </Columns.Column>
+            <Columns.Column>
+              <Button type="submit" className="is-primary is-fullwidth has-text-weight-semibold">
+                Login
+              </Button>
+            </Columns.Column>
+            <Columns.Column className="is-fullwidth has-text-centered has-text-weight-semibold py-1">
+              <Columns className="is-flex is-align-items-center">
+                <Columns.Column>
+                  <hr />
+                </Columns.Column>
+                <Columns.Column>Or</Columns.Column>
+                <Columns.Column>
+                  <hr />
+                </Columns.Column>
+              </Columns>
+            </Columns.Column>
+            <Columns.Column className="py-1">
+              <a href={googleOAuthURL} className="button is-fullwidth has-text-weight-semibold">
+                <FcGoogle className="mr-2" />
+                Continue with Google
+              </a>
+            </Columns.Column>
+          </Columns>
+        </Hero.Body>
+      </Hero>
+    </>
   );
 };
-
 export default Login;
