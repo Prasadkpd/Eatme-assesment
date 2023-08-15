@@ -7,7 +7,18 @@ import userRouter from './user.routes';
 
 const apiRouter = express.Router();
 
-apiRouter.get('/', (req, res) => {
+/**
+ * @openapi
+ * /api/v1/healthcheck:
+ *  get:
+ *     tags:
+ *     - Healthcheck
+ *     description: Responds if the app is up and running
+ *     responses:
+ *       200:
+ *         description: App is up and running
+ */
+apiRouter.get('/healthcheck', (req, res) => {
   res.send('Welcome to the API!');
 });
 

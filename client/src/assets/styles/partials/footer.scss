@@ -1,0 +1,60 @@
+.footer {
+    background-color: $footer-bg;
+    padding: 3rem 1.5rem !important;
+    position: fixed;
+    width: 100vw !important;
+    bottom: 0 !important;
+
+    .footer-con {
+        width: 80vw;
+        margin: 1em auto !important;
+    }
+
+    .tile {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .card {
+        background-color: $fooer-col-bg;
+        padding: 10px !important;
+    }
+
+    .subtitle {
+        color: $white !important;
+        align-items: start;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .content {
+        color: $white !important;
+
+        ul {
+            margin-left: .5em !important;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+    }
+
+    .list {
+        list-style: none !important;
+        justify-content: left !important;
+        align-items: left !important;
+        text-align: left !important;
+    }
+
+    .list li {
+        font-weight: 500;
+    }
+
+    .list a {
+        font-size: 14px;
+        text-decoration: none !important;
+        cursor: pointer;
+    }
+
+    .link:hover {
+        color: $primary !important;
+    }
+}

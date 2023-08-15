@@ -9,7 +9,7 @@ const sequelizeConnection = new Sequelize({
   password: process.env.DB_PASS,
   host: process.env.DB_HOST,
   dialect: 'mysql',
-  // logging: false,
+  logging: false,
   logQueryParameters: true
 });
 

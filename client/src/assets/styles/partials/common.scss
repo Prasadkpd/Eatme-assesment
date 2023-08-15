@@ -1,0 +1,32 @@
+* {
+    font-family: 'IBM Plex Sans', sans-serif !important;
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.input:hover {
+    outline: 2px solid black !important;
+}
+
+.input:active,
+.input:focus {
+    border: none !important;
+    outline: 2px solid black !important;
+}
+
+.button:active,
+.button:focus {
+    border: none;
+    outline: 2px solid $primary !important;
+}
+
+.button::after {
+    border: 1px solid red;
+}
+
+.primary-icons {
+    color: $primary !important;
+}

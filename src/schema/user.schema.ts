@@ -8,37 +8,42 @@ import { object, string, TypeOf } from 'zod';
  *      type: object
  *      required:
  *        - email
- *        - name
+ *        - first_name
+ *        - last_name
  *        - password
- *        - passwordConfirmation
+ *        - type
  *      properties:
  *        email:
  *          type: string
  *          default: jane.doe@example.com
- *        name:
+ *        first_name:
  *          type: string
- *          default: Jane Doe
+ *          default: Jane
+ *        last_name:
+ *          type: string
+ *          default: Doe
+ *        type:
+ *          type: string
+ *          default: Customer
  *        password:
- *          type: string
- *          default: stringPassword123
- *        passwordConfirmation:
  *          type: string
  *          default: stringPassword123
  *    CreateUserResponse:
  *      type: object
  *      properties:
+ *        user_id:
+ *          type: string
  *        email:
  *          type: string
- *        name:
+ *        first_name:
  *          type: string
- *        _id:
+ *        last_name:
  *          type: string
  *        createdAt:
  *          type: string
  *        updatedAt:
  *          type: string
  */
-
 export const createUserSchema = object({
   body: object({
     first_name: string({

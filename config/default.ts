@@ -67,5 +67,9 @@ wAtI5jSpC+zmHkhiF0Oq671PamZF4rPdBnvCSjJbx+uIOyA9eJV9SKRJjS//w8mj
 VykFucNkZYi+hz2a/YfsqpPbad7BYmw/q0zhZVceV2j01Y7EBRp3ZrXp2oG5vRPi
 tgINI7Lk2puv0jZpaE/wvpM4TSNye8nTrhIeHvDmm6dYUtovidzSlv4ltYX+vMbn
 FtpR79QVkLDw78CcctDM6XPU1bQ5Jk7iRnMfp5c3s9/9ZD+kbfmqa97k5Ig=
------END RSA PRIVATE KEY-----`
+-----END RSA PRIVATE KEY-----`,
+  googleClientId: '39295616675-ee4806j9f9c5q05r5ebka24k17lb13ic.apps.googleusercontent.com',
+  googleClientSecret: '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',
+  googleOAuthRedirectUri: 'http://localhost:5001/api/v1/sessions/oauth/google',
+  origin: 'http://localhost:3000'
 };
