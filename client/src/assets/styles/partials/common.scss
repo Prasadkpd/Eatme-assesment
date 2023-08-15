@@ -7,8 +7,26 @@ body {
     padding: 0 !important;
 }
 
-.button:hover,
 .input:hover {
-    border: 2px solid black;
-    outline: none;
+    outline: 2px solid black !important;
+}
+
+.input:active,
+.input:focus {
+    border: none !important;
+    outline: 2px solid black !important;
+}
+
+.button:active,
+.button:focus {
+    border: none;
+    outline: 2px solid $primary !important;
+}
+
+.button::after {
+    border: 1px solid red;
+}
+
+.primary-icons {
+    color: $primary !important;
 }
