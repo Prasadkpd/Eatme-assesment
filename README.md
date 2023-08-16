@@ -26,6 +26,9 @@ Install React app dependencies: `yarn`
 ### Start the app
 Run follwing command with root folder `eatme-assesment`: `yarn start`
 
+### Envirement Variable Setup
+Placed the provided env file in both root and client folders.
+
 ### Access the App:
 
 The API server should be running at http://localhost:5001.
