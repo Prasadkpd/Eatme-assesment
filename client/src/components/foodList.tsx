@@ -1,13 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { Card, Columns } from 'react-bulma-components';
-import Cart from './Cart';
+import jsonData from './../assets/data/foodData.json';
+import Cart from './cart';
 
-// interface CardListProps {
-//   setActiveCategory: React.Dispatch<React.SetStateAction<number | null>>;
-// }
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore
-const CardListCom = ({ setActiveCategory }) => {
+const FoodList = ({ setActiveCategory }) => {
   const categories = [
     'Bundles',
     'Salads',
@@ -21,41 +19,6 @@ const CardListCom = ({ setActiveCategory }) => {
   ];
 
   const cardRefs = useRef<HTMLDivElement[]>([]);
-
-  const jsonData = [
-    {
-      itemId: '1',
-      itemName: 'Product 1',
-      description: 'This is the description for Product 1.',
-      price: 19.99,
-      imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPn2zUylueZFtDOPLsrUoWkcf9LJL44haHbg&usqp=CAU'
-    },
-    {
-      itemId: '2',
-      itemName: 'Product 2',
-      description: 'This is the description for Product 2.',
-      price: 29.99,
-      imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRnbZEGD5_z5u1R_Oji_DDm7HtqNWGGShUxA&usqp=CAU'
-    },
-    {
-      itemId: '3',
-      itemName: 'Product 3',
-      description: 'This is the description for Product 3.',
-      price: 39.99,
-      imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUotFdbxG4yWhZV0vxU4HnxqRy6UUicp5ntg&usqp=CAU'
-    },
-    {
-      itemId: '4',
-      itemName: 'Product 4',
-      description: 'This is the description for Product 4.',
-      price: 49.99,
-      imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoLk18JM-y5CMA_kelGhVzWTt8erE4b809nQ&usqp=CAU'
-    }
-  ];
 
   useEffect(() => {
     const options = {
@@ -127,4 +90,4 @@ const CardListCom = ({ setActiveCategory }) => {
   );
 };
 
-export default CardListCom;
+export default FoodList;

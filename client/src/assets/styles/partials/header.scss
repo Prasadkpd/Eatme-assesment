@@ -29,9 +29,10 @@
 .tab-bar {
     border-top: 2px solid #f4f4f4;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px !important;
+
     .tab-btn {
         color: $primary !important;
-        font-weight: 800 !important;
+        font-weight: 1000 !important;
         font-size: 12px;
         padding-top: 4px;
     }
@@ -42,5 +43,12 @@
 
     .is-inverted {
         color: $primary !important;
+    }
+}
+
+.top-card {
+    .top-card-img img {
+        width: 600px !important;
+        margin-left: 2em;
     }
 }

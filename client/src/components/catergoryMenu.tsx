@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, Navbar } from 'react-bulma-components';
 
-interface NavigationBarProps {
+interface CategoryMenuProps {
   activeCategory: number | null;
 }
 
-const NavigationBar: React.FC<NavigationBarProps> = ({ activeCategory }) => {
+const CategoryMenu: React.FC<CategoryMenuProps> = ({ activeCategory }) => {
   const categories = [
     'Bundles',
     'Salads',
@@ -39,4 +39,4 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ activeCategory }) => {
   );
 };
 
-export default NavigationBar;
+export default CategoryMenu;

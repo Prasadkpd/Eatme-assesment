@@ -8,7 +8,7 @@ This repository contains the Node.js API and React app for the EatMe assignment.
 
 * React App: The client folder contains a React application that serves as the frontend for the EatMe application.
 
-* Database Migration: Before running the application, make sure to create a database named eatme-assignment and import the provided schema file. Update the .env file with your database username and password.
+* Database Migration: Before running the application, make sure to create a database named eatme-assignment and import the provided schema file from `db_script`. Update the .env file with your database username and password.
 
 ### Getting Started
 Database Setup: Create a database named eatme-assignment and import the provided schema file. Update the .env file in the root directory with your database username and password.
